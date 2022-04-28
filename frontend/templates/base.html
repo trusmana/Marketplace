@@ -1,20 +1,24 @@
 {% load static %}
+{% load static tailwind_tags %}
 <!DOCTYPE html>
 <html class="h-full bg-gray-100">
 	<head>
-    <title>App|{% block title %}{% endblock%}</title>
+    <title>App | {% block title %}{% endblock%}</title>
 		<meta charset="UTF-8">
-		<link rel="stylesheet" href="{% static 'css/dist/all.min.css' %}" />
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" />
 		<link rel="stylesheet" href="{% static 'css/dist/index.min.css' %}" />
 		<script src="{% static 'js/index.min.js' %}"></script>
-		{% block extrahead %} {% endblock %}
+		{% block extrahead %}{% endblock %}
+		{% tailwind_preload_css %}
+    	{% tailwind_css %}
 	</head>
 
 	<body class="h-full">
-		<div class="min-h-full">
-			{% include 'header.html' %}
+		{% include 'header.html' %}
+		<div class="max-w-7xl mx-auto py-1 sm:px-6 lg:px-8">
+      		<div class="px-4 py-1 sm:px-0">
 			{% block content %}{% endblock%}
+			</div>
 		</div>
 			{% block javascript %}
 			{% endblock %}

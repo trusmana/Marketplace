@@ -3,17 +3,40 @@
 
 
 {% block content %}
-<div class="max-w-6xl mx-auto py-2 px-2 sm:px-6 lg:px-8">
-  <h1 class="text-xl font-bold text-gray-900">Dashboard</h1>
-</div>
-
-<div class="max-w-6xl mx-auto  sm:px-6 lg:px-8">
-  <div class="px-4 py-6 sm:px-0">
-    <div class="border-4 border-dashed border-gray-200 rounded-lg h-96">
-        
+<header class="bg-white shadow">
+    <div class="max-w-7xl mx-auto py-2 px-2 sm:px-6 lg:px-8">
+      <h1 class="text-3xl font-bold text-gray-900">Dashboard</h1>
     </div>
-  </div>
-  <!-- /End replace -->
-</div>
+</header>
+<main class="">
+    <div class="bg-white ">
+      <div class="max-w-2xl mx-auto py-6 px-2 sm:py-17 sm:px-6 lg:max-w-7xl lg:px-8">
+        <h2 class="text-2xl font-extrabold tracking-tight text-gray-900">Customers also purchased</h2>
+        <div class="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+          <div class="group relative">
+            <div class="object-scale-down h-25 w-73">
+              <img src="https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg" alt="Front of men&#039;s Basic Tee in black."
+              class="w-full h-full object-center object-cover lg:w-full lg:h-full">
+            </div>
+            <div class="mt-4 flex justify-between">
+              <div>
+                <h3 class="text-sm text-gray-700">
+                  <a href="#">
+                    <span aria-hidden="true" class="absolute inset-0"></span>
+                    Basic Tee
+                  </a>
+                </h3>
+                <p class="mt-1 text-sm text-gray-500">Black</p>
+              </div>
+              <p class="text-sm font-medium text-gray-900">$35</p>
+            </div>
+          </div>
+
+          <!-- More products... -->
+        </div>
+      </div>
+    </div>
+</main>
+
 
 {% endblock content %}
