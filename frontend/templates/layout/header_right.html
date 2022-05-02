@@ -1,0 +1,60 @@
+{% load static  %}
+<div class="flex flex-wrap items-stretch mr-4 rounded">
+    <form class="flex mr-4 rounded" action="{#% url 'products' %#}">
+      <input type="search" class="form-control relative flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" placeholder="Search" aria-label="Search" aria-describedby="button-addon2" name="search">
+      <span class=" flex items-center px-3 py-1.5 text-base font-normal text-gray-700 text-center whitespace-nowrap rounded" id="basic-addon2">
+        <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="w-4" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+          <path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"></path>
+        </svg>
+      </span>
+    </form>
+</div>
+<div class="flex items-center relative">
+    <a class="text-gray-500 hover:text-gray-700 focus:text-gray-700 mr-4 px-3" href="#">
+      <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="shopping-cart"
+        class="w-4" role="img" xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 576 512">
+        <path fill="currentColor"
+          d="M528.12 301.319l47.273-208C578.806 78.301 567.391 64 551.99 64H159.208l-9.166-44.81C147.758 8.021 137.93 0 126.529 0H24C10.745 0 0 10.745 0 24v16c0 13.255 10.745 24 24 24h69.883l70.248 343.435C147.325 417.1 136 435.222 136 456c0 30.928 25.072 56 56 56s56-25.072 56-56c0-15.674-6.447-29.835-16.824-40h209.647C430.447 426.165 424 440.326 424 456c0 30.928 25.072 56 56 56s56-25.072 56-56c0-22.172-12.888-41.332-31.579-50.405l5.517-24.276c3.413-15.018-8.002-29.319-23.403-29.319H218.117l-6.545-32h293.145c11.206 0 20.92-7.754 23.403-18.681z">
+        </path>
+      </svg>
+    </a>
+
+    <div class="dropdown relative">
+      <a class="dropdown-toggle flex items-center hidden-arrow" href="#" id="dropdownMenuButton2" role="button"
+        data-bs-toggle="dropdown" aria-expanded="false">
+        {% if user.is_authenticated %}
+        <img src="{{ user.profile.avatar.url }}" class="rounded-full" style="height: 25px; width: 25px" alt="" loading="lazy" />
+        {%else%}
+        <img src="{% static 'img/logo_tr.jpg' %}" class="rounded-full" style="height: 25px; width: 25px" alt="" loading="lazy" />
+        {% endif %}
+      </a>
+      <ul class="dropdown-menu min-w-max absolute hidden bg-white text-base z-50 float-left py-2
+          list-none text-left rounded-lg shadow-lg mt-1 hidden m-0 bg-clip-padding
+          border-none left-auto right-0" aria-labelledby="dropdownMenuButton2">
+        <li>
+          <a class="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap
+              bg-transparent text-gray-700 hover:bg-gray-100 " href="#">Order</a>
+        </li>
+        <li>
+            <a class="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap
+            bg-transparent text-gray-700 hover:bg-gray-100 " href="#">Service Center</a>
+        </li>
+        {% if user.is_authenticated %}
+        <li>
+            <a class="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap
+            bg-transparent text-gray-700 hover:bg-gray-100 " href="{% url 'logout'  %}"
+            data-bs-toggle="modal" data-bs-target="#exampleModalScrollable"
+            >Logout </a>
+        </li>
+        {% else %}
+        <li>
+            <a class="dropdown-item text-sm py-2 px-4 font-normal block w-full whitespace-nowrap
+            bg-transparent text-gray-700 hover:bg-gray-100 " href="{% url 'login'  %}">Login / Daftar</a>
+        </li>
+        {% endif %}
+
+      </ul>
+      {% include "layout/member/logout_modal.html" %}
+    </div>
+</div>

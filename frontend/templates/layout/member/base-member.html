@@ -1,0 +1,27 @@
+{% load static %}
+{% load static tailwind_tags %}
+<!DOCTYPE html>
+<html class="h-full bg-gray-100">
+	<head>
+    <title>App | {% block title %}{% endblock%}</title>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" />
+		<link rel="stylesheet" href="{% static 'css/index.min.css' %}" />
+		<script src="{% static 'js/index.min.js' %}"></script>
+		{% block extrahead %}{% endblock %}
+		{% tailwind_preload_css %}
+    	{% tailwind_css %}
+	</head>
+
+	<body class="h-full">
+		{% include 'layout/header.html' %}
+		<div class="flex">
+			{% include 'layout/member/sidenav.html' %}
+			<div class="w-full h-full p-4 m-8 overflow-y-auto">
+				{% block content %} {% endblock %}
+			</div>
+		</div>
+			{% block javascript %}
+			{% endblock %}
+	</body>
+</html>
