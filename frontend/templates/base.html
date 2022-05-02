@@ -6,7 +6,7 @@
     <title>App | {% block title %}{% endblock%}</title>
 		<meta charset="UTF-8">
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" />
-		<link rel="stylesheet" href="{% static 'css/dist/index.min.css' %}" />
+		<link rel="stylesheet" href="{% static 'css/index.min.css' %}" />
 		<script src="{% static 'js/index.min.js' %}"></script>
 		{% block extrahead %}{% endblock %}
 		{% tailwind_preload_css %}
@@ -14,7 +14,7 @@
 	</head>
 
 	<body class="h-full">
-		{% include 'header.html' %}
+		{% include 'layout/header.html' %}
 		<div class="max-w-7xl mx-auto py-1 sm:px-6 lg:px-8">
       		<div class="px-4 py-1 sm:px-0">
 			{% block content %}{% endblock%}
