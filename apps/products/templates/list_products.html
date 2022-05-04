@@ -1,13 +1,11 @@
-{% extends "layout/member/base-member.html" %}
-{% block title %} Home{% endblock title %}
-{% block extrahead  %}
+{% extends 'base.html' %}
+{% block title %}Produck{% endblock title %}
+{% block extrahead %}
 {% include "alat/data_table.html" %}
-{% endblock  %}
+{% endblock extrahead %}
 {% load static %}
-{% load humanize %}
 {% block content %}
-
-<h2 class="text-xl font-bold text-gray-900 pt-1">Daftar Barang</h2>
+<h2 class="text-xl font-bold text-gray-900 pt-1">Daftar Poducts</h2>
 <div class="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
 <nav aria-label="Breadcrumb">
   <ol role="list" class="max-w-2xl mx-auto px-4 flex items-center space-x-2 sm:px-6 lg:max-w-7xl lg:px-8">
@@ -20,8 +18,9 @@
       </div>
     </li>
     <li class="text-xs">
-      <a href="." aria-current="page" class="font-medium text-gray-500 hover:text-gray-600"> Daftar Barang </a>
+      <a href="." aria-current="page" class="font-medium text-gray-500 hover:text-gray-600"> Daftar Anggota </a>
     </li>
+
   </ol>
 </nav>
 </div>
@@ -30,49 +29,49 @@
         <div class="w-full">
             <div class="p-4 border-b border-gray-200 shadow">
                 <div class="text-right space-x-2 justify-center ">
-                    <a href="{% url 'add-products'%}" type="button" class="pt-2 p-6 py-6 px-6 ">
-                        <button type="button" class="inline-block px-6 py-2.5 bg-blue-700 
-                        font-medium text-ms rounded shadow-md hover:bg-blue-700  active:bg-blue-700 ">Add</button></a>
+                    <a href="{% url 'add-anggota' %}" type="button" class="pt-2 p-6 py-6 px-6 ">
+                        <button type="button" class="inline-block px-6 py-2.5 bg-blue-600 font-medium text-ms rounded shadow-md hover:bg-blue-700  active:bg-blue-700 ">Add</button></a>
                 </div>
 
+                <!-- <table> -->
                 <table id="dataTable" class="p-4">
                     <thead class="bg-gray-50">
                         <tr>
                             <th class="p-8 text-xs text-gray-500">ID</th>
-                            <th class="p-8 text-xs text-gray-500">Barang</th>
-                            <th class="p-8 text-xs text-gray-500">Jumlah</th>
-                            <th class="p-8 text-xs text-gray-500">Harga Beli</th>
-                            <th class="p-8 text-xs text-gray-500">Harga Jual</th>
-                            <th class="p-8 text-xs text-gray-500">SKU</th>
+                            <th class="p-8 text-xs text-gray-500">Name</th>
+                            <th class="p-8 text-xs text-gray-500">Email</th>
+                            <th class="p-8 text-xs text-gray-500">NIM</th>
+                            <th class="p-8 text-xs text-gray-500">Created_at</th>
+                            <th class="p-8 text-xs text-gray-500">Pinjaman</th>
                             <th class="px-6 py-2 text-xs text-gray-500">Edit</th>
                             <th class="px-6 py-2 text-xs text-gray-500">Cetak</th>
                         </tr>
                     </thead>
                     <tbody class="bg-white">
-                        {% for data in products %}
+                        {% for data in data %}
                         <tr class="whitespace-nowrap">
                             <td class="px-6 py-4 text-sm text-center text-gray-500">
                                 {{forloop.counter}}
                             </td>
                             <td class="px-6 py-4 text-center">
                                 <div class="text-sm text-gray-900">
-                                    {{data.prod.nama}}
+                                    {{data.nama}}
                                 </div>
                             </td>
                             <td class="px-6 py-4 text-center">
-                                <div class="text-sm text-gray-500">{{data.qt|intcomma}}</div>
+                                <div class="text-sm text-gray-500">{{data.email}}</div>
                             </td>
                             <td class="px-6 py-4 text-center">
-                                <div class="text-sm text-gray-500">{{data.harga_beli|intcomma}}</div>
+                                <div class="text-sm text-gray-500">{{data.nim}}</div>
                             </td>
                             <td class="px-6 py-4 text-sm text-center text-gray-500">
-                                {{data.harga_jual|intcomma}}
+                                {{data.tanggal_registrasi|date:"d-m-Y"}}
                             </td>
                             <td class="px-6 py-4 text-center">
-                                {{data.sku}}
+                                <a href="{% url 'daftar_pinjam' data.id%}" class="px-4 py-1 text-sm text-white bg-blue-400 rounded">List</a>
                             </td>
                             <td class="px-6 py-4 text-center">
-                                <a href="" class="px-4 py-1 text-sm text-white bg-blue-400 rounded">Edit</a>
+                                <a href="{% url 'e-anggota' data.id %}" class="px-4 py-1 text-sm text-white bg-blue-400 rounded">Edit</a>
                             </td>
                             <td class="px-6 py-4 text-center">
                                 <a href="#" class="px-4 py-1 text-sm text-white bg-blue-400 rounded">Cetak</a>

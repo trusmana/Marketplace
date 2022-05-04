@@ -1,0 +1,8 @@
+{% load static  %}
+<script src="{% static 'js/number/date/jquery-1.4.2.min.js' %}"></script>
+<script src="{% static 'js/number/date/jquery.maskedinput-1.2.2-co.min.js' %}"></script>
+<script type="text/javascript">
+    jQuery(function($){
+    $("#id_tahun").mask("9999-99-99", {placeholder: 'YYYY-MM-DD'});
+});
+</script>
