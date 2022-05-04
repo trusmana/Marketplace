@@ -1,0 +1,15 @@
+{% load static %}
+<script src="{% static 'js/number/jquery.1.10.2.min.js' %}" type="text/javascript"></script>
+<script src="{% static 'js/number/jquery.maskMoney.js' %}" type="text/javascript"></script>
+<script src="{% static 'js/number/master.js' %}"></script>
+<script src="{% static 'js/number/script.js' %}"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+    $("input.text").maskMoney({allowNegative: false,thousands:'.',decimal:',',affixesStay: false
+        }).trigger('mask.maskMoney');
+    $('.tabular').submit(function(){
+        $('input.text').each(function () { $(this).val(to_number($(this).val())); });
+        return true;
+    });
+});
+</script>
